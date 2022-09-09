@@ -1,3 +1,9 @@
+category:
+  url:      /category/:slug
+  class:    sfPropelRoute
+  param:    { module: category, action: show }
+  options:  { model: JobeetCategory, type: object }
+
 job:
   class:   sfPropelRouteCollection
   options: { model: JobeetJob }
@@ -17,10 +23,3 @@ job_show_user:
 homepage:
   url:   /
   param: { module: job, action: index }
-
-#default_index:
-#  url:   /:module
-#  param: { action: index }
-#
-#default:
-#  url:   /:module/:action/*
