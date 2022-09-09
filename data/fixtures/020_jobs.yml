@@ -1,6 +1,6 @@
 JobeetJob:
 <?php foreach(['administrator', 'programming', 'design', 'manager'] as $j => $cat): ?>
-<?php for($i = 1; $i < mt_rand(15, 30); $i++): ?>
+<?php for($i = 1; $i < mt_rand(45, 75); $i++): ?>
   job_extreme_sensio_<?php echo $i . $j ?>:
     category_id:  <?php echo $cat . "\n"; ?>
     type:         part-time
