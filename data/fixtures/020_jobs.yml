@@ -1,30 +1,10 @@
 JobeetJob:
-  job_sensio_labs:
-    category_id:  programming
-    type:         full-time
-    company:      Sensio Labs
-    logo:         sensio-labs.gif
-    url:          http://www.sensiolabs.com/
-    position:     Web Developer
-    location:     Paris, France
-    description:  |
-      You've already developed websites with symfony and you want to
-      work with Open-Source technologies. You have a minimum of 3
-      years experience in web development with PHP or Java and you
-      wish to participate to development of Web 2.0 sites using the
-      best frameworks available.
-    how_to_apply: |
-      Send your resume to fabien.potencier [at] sensio.com
-    is_public:    true
-    is_activated: true
-    token:        job_sensio_labs
-    email:        job@example.com
-    expires_at:   2010-10-10
-
-  job_extreme_sensio:
-    category_id:  design
+<?php foreach(['administrator', 'programming', 'design', 'manager'] as $j => $cat): ?>
+<?php for($i = 1; $i < 20; $i++): ?>
+  job_extreme_sensio_<?php echo $i . $j ?>:
+    category_id:  <?php echo $cat . "\n"; ?>
     type:         part-time
-    company:      Extreme Sensio
+    company:      Company <?php echo $i . $j . "\n" ?>
     logo:         extreme-sensio.gif
     url:          http://www.extreme-sensio.com/
     position:     Web Designer
@@ -35,7 +15,7 @@ JobeetJob:
       enim ad minim veniam, quis nostrud exercitation ullamco laboris
       nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
       in reprehenderit in.
-      
+
       Voluptate velit esse cillum dolore eu fugiat nulla pariatur.
       Excepteur sint occaecat cupidatat non proident, sunt in culpa
       qui officia deserunt mollit anim id est laborum.
@@ -43,6 +23,8 @@ JobeetJob:
       Send your resume to fabien.potencier [at] sensio.com
     is_public:    true
     is_activated: true
-    token:        job_extreme_sensio
+    token:        job_extreme_sensio_<?php echo $i . $j ?>
     email:        job@example.com
-    expires_at:   2010-10-10
+    created_at: 2022-10-10
+<?php endfor; ?>
+<?php endforeach; ?>

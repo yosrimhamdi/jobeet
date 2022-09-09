@@ -1,17 +1,10 @@
 <?php
 
-/**
- * job actions.
- *
- * @package    jobeetdocs
- * @subpackage job
- * @author     Your name here
- */
 class jobActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->JobeetJobs = JobeetJobPeer::doSelect(new Criteria());
+    $this->categories = JobeetCategoryPeer::getWithJobs();
   }
 
   public function executeShow(sfWebRequest $request)
@@ -37,14 +30,14 @@ class jobActions extends sfActions
 
   public function executeEdit(sfWebRequest $request)
   {
-    $this->forward404Unless($JobeetJob = JobeetJobPeer::retrieveByPk($request->getParameter('id')), sprintf('Object JobeetJob does not exist (%s).', $request->getParameter('id')));
+    $this->forward404Unless($JobeetJob = $this->getRoute()->getObject(), sprintf('Object JobeetJob does not exist (%s).', $request->getParameter('id')));
     $this->form = new JobeetJobForm($JobeetJob);
   }
 
   public function executeUpdate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($JobeetJob = JobeetJobPeer::retrieveByPk($request->getParameter('id')), sprintf('Object JobeetJob does not exist (%s).', $request->getParameter('id')));
+    $this->forward404Unless($JobeetJob =  $this->getRoute()->getObject(), sprintf('Object JobeetJob does not exist (%s).', $request->getParameter('id')));
     $this->form = new JobeetJobForm($JobeetJob);
 
     $this->processForm($request, $this->form);
@@ -56,7 +49,7 @@ class jobActions extends sfActions
   {
     $request->checkCSRFProtection();
 
-    $this->forward404Unless($JobeetJob = JobeetJobPeer::retrieveByPk($request->getParameter('id')), sprintf('Object JobeetJob does not exist (%s).', $request->getParameter('id')));
+    $this->forward404Unless($JobeetJob =  $this->getRoute()->getObject(), sprintf('Object JobeetJob does not exist (%s).', $request->getParameter('id')));
     $JobeetJob->delete();
 
     $this->redirect('job/index');
