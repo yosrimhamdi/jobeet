@@ -24,7 +24,6 @@ class jobActions extends sfActions
   {
     $this->form = new JobeetJobForm();
     $this->processForm($request, $this->form);
-    $this->setTemplate('new');
   }
 
   public function executeEdit(sfWebRequest $request)
@@ -36,7 +35,6 @@ class jobActions extends sfActions
   {
     $this->form = new JobeetJobForm($this->getRoute()->getObject());
     $this->processForm($request, $this->form);
-    $this->setTemplate('edit');
   }
 
   public function executeDelete(sfWebRequest $request)

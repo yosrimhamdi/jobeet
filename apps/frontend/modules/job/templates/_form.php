@@ -11,13 +11,7 @@
     </tr>
     </tfoot>
     <tbody>
-    <?php
-        foreach ($form as $widget) {
-            if (!$widget->isHidden()) {
-                echo $widget->renderRow();
-            }
-        }
-    ?>
+    <?php echo $form ?>
     </tbody>
 </table>
 </form>

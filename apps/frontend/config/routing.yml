@@ -14,7 +14,7 @@ job:
     token: \w+
 
 job_show_user:
-  url:     /job/:token
+  url:     /job/:company_slug/:location_slug/:id/:position_slug
   class:   sfPropelRoute
   options:
     model: JobeetJob
@@ -23,7 +23,7 @@ job_show_user:
     column: token
   param:   { module: job, action: show }
   requirements:
-    token: \w+
+    id: \d+
     sf_method: [get]
 
 homepage:
