@@ -26,6 +26,19 @@ class affiliateActions extends autoAffiliateActions
     foreach ($affiliates as $affiliate)
     {
       $affiliate->activate();
+
+      $this->getMailer()->composeAndSend(
+        array('bavary1515@gmail.com' => 'Jobeet Bot'),
+        $affiliate->getEmail(),
+          'Jobeet affiliate token',
+          <<<EOF
+  Your Jobeet affiliate account has been activated.
+   
+  Your token is {$affiliate->getToken()}.
+   
+  The Jobeet Bot.
+EOF
+      );
     }
 
     $this->redirect('jobeet_affiliate');

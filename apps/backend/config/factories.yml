@@ -40,3 +40,17 @@ all:
     param:
       cache_key_use_vary_headers: true
       cache_key_use_host_name:    true
+  mailer:
+    class: sfMailer
+    param:
+      logging: %SF_LOGGING_ENABLED%
+      charset: %SF_CHARSET%
+      delivery_strategy: realtime
+      transport:
+        class: Swift_SmtpTransport
+        param:
+          host: smtp.mailtrap.io
+          port: 2525
+          encryption: tls
+          username: 70472140b3e3fb
+          password: 50882bb3065ae6
