@@ -24,4 +24,12 @@ class JobeetAffiliatePeer extends BaseJobeetAffiliatePeer {
 
     return self::doSelectOne($criteria);
   }
+
+  static public function countToBeActivated()
+  {
+    $criteria = new Criteria();
+    $criteria->add(self::IS_ACTIVE, 0);
+
+    return self::doCount($criteria);
+  }
 }

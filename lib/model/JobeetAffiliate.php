@@ -58,4 +58,18 @@ class JobeetAffiliate extends BaseJobeetAffiliate {
 
     return JobeetJobPeer::doSelect($criteria);
   }
+
+  public function activate()
+  {
+    $this->setIsActive(true);
+
+    return $this->save();
+  }
+
+  public function deactivate()
+  {
+    $this->setIsActive(false);
+
+    return $this->save();
+  }
 }

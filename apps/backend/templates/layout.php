@@ -21,6 +21,11 @@
     <div id="menu">
         <ul>
             <li>
+                <a href="<?php echo url_for('jobeet_affiliate') ?>">
+                    Affiliates - <strong><?php echo JobeetAffiliatePeer::countToBeActivated() ?></strong>
+                </a>
+            </li>
+            <li>
               <?php echo link_to('Jobs', 'jobeet_job') ?>
             </li>
             <li>
