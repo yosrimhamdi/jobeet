@@ -17,5 +17,11 @@
  * @package    lib.model
  */
 class JobeetAffiliatePeer extends BaseJobeetAffiliatePeer {
+  static public function getByToken($token)
+  {
+    $criteria = new Criteria();
+    $criteria->add(self::TOKEN, $token);
 
-} // JobeetAffiliatePeer
+    return self::doSelectOne($criteria);
+  }
+}
