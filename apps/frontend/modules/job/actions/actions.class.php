@@ -12,6 +12,7 @@ class jobActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
     $this->categories = JobeetCategoryPeer::getWithJobs();
+    $this->getWithJobs = [''];
   }
 
   public function executeShow(sfWebRequest $request)
@@ -31,6 +32,7 @@ class jobActions extends sfActions
   {
     $this->form = new JobeetJobForm();
     $this->processForm($request, $this->form);
+    $this->setTemplate('new');
   }
 
   public function executeEdit(sfWebRequest $request)
@@ -42,6 +44,7 @@ class jobActions extends sfActions
   {
     $this->form = new JobeetJobForm($this->getRoute()->getObject());
     $this->processForm($request, $this->form);
+    $this->setTemplate('new');
   }
 
   public function executeDelete(sfWebRequest $request)
