@@ -1,3 +1,17 @@
+api_categories:
+  url:     /api/categories
+  class:   sfPropelRoute
+  param:   { module: api, action: getCategories }
+  options: { model: JobeetCategory, type: list }
+
+api_jobs:
+  url:     /api/:token/jobs.:sf_format
+  class:   sfPropelRoute
+  param:   { module: api, action: list }
+  options: { model: JobeetJob, type: list, method: getForToken }
+  requirements:
+    sf_format: (?:xml|json|yaml)
+
 job_search:
   url:   /search
   param: { module: job, action: search }
@@ -8,14 +22,6 @@ affiliate:
     model: JobeetAffiliate
 #    actions: [new, create, index]
     object_actions: { wait: get }
-
-api_jobs:
-  url:     /api/:token/jobs.:sf_format
-  class:   sfPropelRoute
-  param:   { module: api, action: list }
-  options: { model: JobeetJob, type: list, method: getForToken }
-  requirements:
-    sf_format: (?:xml|json|yaml)
 
 category:
   url:      /category/:slug

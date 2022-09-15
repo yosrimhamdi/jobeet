@@ -11,4 +11,9 @@ class JobeetCategoryPeer extends BaseJobeetCategoryPeer {
 
     return self::doSelect($criteria);
   }
+
+  public function getCategories()
+  {
+    return self::doSelect(new Criteria());
+  }
 }
